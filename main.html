@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='main.css')}}">
+<section>
+	<h2>추천 도서</h2>
+	<div class="book-list">
+		<!-- Recommended book 1 -->
+		<div class="book">
+			<img src="{{ recommended_book_1[7] }}" alt="{{ recommended_book_1[1] }}">
+			<h3>{{ recommended_book_1[1] }}</h3>
+			<p>{{ recommended_book_1[6] }}</p>
+			<a href="{{ url_for('book_detail', number=recommended_book_1[0]) }}"><button>Read Now</button></a>
+		</div>
+		<!-- Recommended book 2 -->
+		<div class="book">
+			<img src="{{ recommended_book_2[7] }}" alt="{{ recommended_book_2[1] }}">
+			<h3>{{ recommended_book_2[1] }}</h3>
+			<p>{{ recommended_book_2[6] }}</p>
+			<a href="{{ url_for('book_detail', number=recommended_book_2[0]) }}"><button>Read Now</button></a>
+		</div>
+		<!-- Recommended book 3 -->
+		<div class="book">
+			<img src="{{ recommended_book_3[7] }}" alt="{{ recommended_book_3[1] }}">
+			<h3>{{ recommended_book_3[1] }}</h3>
+			<p>{{ recommended_book_3[6] }}</p>
+			<a href="{{ url_for('book_detail', number=recommended_book_3[0]) }}"><button>Read Now</button></a>
+		</div>
+	</div>
+	<h2>신상 도서</h2>
+	<div class="book-list">
+		{% for book in new_books %}
+		<div class="book">
+			<img src="{{ book[7] }}" alt="{{ book[1] }}">
+			<h3>{{ book[1] }}</h3>
+			<p>{{ book[6] }}</p>
+			<a href="{{ url_for('book_detail', number=book[0]) }}"><button>Read Now</button></a>
+		</div>
+		{% endfor %}
+	</div>
+	</div>
+</section>
+{% endblock %}
